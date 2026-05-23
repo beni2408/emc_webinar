@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EMC Webinar — Get a Free Audit for ₹1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-2: #11111a;
+    --surface: #16162155;
+    --border: #2a2a3d;
+    --text: #f5f5f7;
+    --text-dim: #a4a4b8;
+    --accent: #ffd84d;
+    --accent-2: #ff6b35;
+    --gradient: linear-gradient(135deg, #ffd84d 0%, #ff6b35 100%);
+    --radius: 16px;
+    --shadow: 0 20px 60px -20px rgba(255, 216, 77, 0.25);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Background grid + gradient orbs */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(255, 216, 77, 0.12), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.10), transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* === NAVBAR === */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    background: rgba(10, 10, 15, 0.7);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--accent); }
+  .nav-cta {
+    background: var(--gradient);
+    color: #0a0a0f;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+  .nav-cta:hover { transform: translateY(-1px); }
+
+  /* === HERO === */
+  .hero {
+    padding: 80px 0 100px;
+    text-align: center;
+    position: relative;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--text-dim);
+    background: var(--surface);
+    margin-bottom: 28px;
+  }
+  .badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1 .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 auto 40px;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+  .btn-primary {
+    background: var(--gradient);
+    color: #0a0a0f;
+    padding: 18px 36px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 25px 70px -15px rgba(255, 216, 77, 0.4);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    padding: 18px 36px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    background: rgba(255, 216, 77, 0.05);
+  }
+
+  /* Stats strip */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    backdrop-filter: blur(10px);
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* === SECTION DEFAULTS === */
+  section {
+    padding: 100px 0;
+    position: relative;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .eyebrow {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  h2 .accent {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+  }
+
+  /* === ABOUT / WHAT YOU LEARN === */
+  .learn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .learn-card {
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .learn-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .learn-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 216, 77, 0.3);
+  }
+  .learn-card:hover::before { transform: scaleX(1); }
+  .learn-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 216, 77, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  .learn-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .learn-card p {
+    color: var(--text-dim);
+    font-size: 15px;
+  }
+
+  /* === HOST / INSTRUCTOR === */
+  .host-section {
+    background: linear-gradient(180deg, transparent, rgba(255, 216, 77, 0.03), transparent);
+  }
+  .host-card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 48px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: var(--surface);
+    backdrop-filter: blur(10px);
+  }
+  .host-avatar {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 20px;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 80px;
+    font-weight: 800;
+    color: #0a0a0f;
+    position: relative;
+    overflow: hidden;
+  }
+  .host-avatar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent);
+  }
+  .host-info h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .host-role {
+    color: var(--accent);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+  .host-bio { color: var(--text-dim); margin-bottom: 20px; }
+  .host-creds {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .host-cred {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .host-cred strong {
+    color: var(--text);
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    display: block;
+  }
+
+  /* === TESTIMONIALS === */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .testimonial {
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    backdrop-filter: blur(10px);
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    font-family: 'Fraunces', serif;
+    font-size: 80px;
+    color: var(--accent);
+    opacity: 0.2;
+    line-height: 1;
+  }
+  .testimonial p {
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a0a0f;
+    font-weight: 700;
+    font-family: 'Fraunces', serif;
+  }
+  .author-name { font-weight: 600; font-size: 14px; }
+  .author-title { font-size: 12px; color: var(--text-dim); }
+
+  /* === PRICING / OFFER === */
+  .offer-card {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px;
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(255, 216, 77, 0.08), rgba(255, 107, 53, 0.04));
+    border: 1px solid rgba(255, 216, 77, 0.3);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .offer-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255, 216, 77, 0.15), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(255, 107, 53, 0.12), transparent 50%);
+    pointer-events: none;
+  }
+  .offer-tag {
+    display: inline-block;
+    background: var(--gradient);
+    color: #0a0a0f;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .price {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .price .currency {
+    font-size: 0.5em;
+    vertical-align: top;
+    color: var(--accent);
+  }
+  .price .strike {
+    font-size: 0.35em;
+    color: var(--text-dim);
+    text-decoration: line-through;
+    margin-left: 16px;
+    font-weight: 400;
+    vertical-align: middle;
+  }
+  .offer-tagline {
+    color: var(--text-dim);
+    font-size: 17px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .offer-list {
+    list-style: none;
+    text-align: left;
+    max-width: 420px;
+    margin: 0 auto 36px;
+    position: relative;
+  }
+  .offer-list li {
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+  }
+  .offer-list li:last-child { border-bottom: none; }
+  .check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: #0a0a0f;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .btn-payment {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--gradient);
+    color: #0a0a0f;
+    padding: 20px 48px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 17px;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    font-family: inherit;
+  }
+  .btn-payment:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 25px 70px -15px rgba(255, 216, 77, 0.5);
+  }
+
+  /* === FORM === */
+  .form-section {
+    background: linear-gradient(180deg, transparent, rgba(255, 107, 53, 0.04));
+  }
+  .form-wrap {
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 48px;
+    border-radius: 24px;
+    background: var(--surface);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 4px rgba(255, 216, 77, 0.1);
+  }
+  .form-group input::placeholder { color: #5a5a72; }
+  .btn-submit {
+    width: 100%;
+    padding: 18px;
+    border-radius: 12px;
+    background: var(--gradient);
+    color: #0a0a0f;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+  }
+  .btn-submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .form-message {
+    margin-top: 20px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    display: none;
+    text-align: center;
+  }
+  .form-message.success {
+    display: block;
+    background: rgba(80, 200, 120, 0.1);
+    border: 1px solid rgba(80, 200, 120, 0.3);
+    color: #7ee2a8;
+  }
+  .form-message.error {
+    display: block;
+    background: rgba(255, 80, 80, 0.1);
+    border: 1px solid rgba(255, 80, 80, 0.3);
+    color: #ff8b8b;
+  }
+
+  /* === FAQ === */
+  .faq-grid {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+  .faq-item[open] { border-color: rgba(255, 216, 77, 0.3); }
+  .faq-item summary {
+    padding: 22px 28px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-size: 24px;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+    font-family: 'Fraunces', serif;
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p {
+    padding: 0 28px 24px;
+    color: var(--text-dim);
+    font-size: 15px;
+  }
+
+  /* === FOOTER === */
+  footer {
+    padding: 60px 0 40px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  footer .logo { justify-content: center; display: inline-block; margin-bottom: 16px; }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .host-card { grid-template-columns: 1fr; padding: 32px; text-align: center; }
+    .host-avatar { max-width: 200px; margin: 0 auto; }
+    .host-creds { justify-content: center; }
+    .offer-card { padding: 36px 24px; }
+    .form-wrap { padding: 32px 24px; }
+    section { padding: 70px 0; }
+    .hero { padding: 50px 0 70px; }
+    .cta-group { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-secondary { justify-content: center; }
+  }
+  @media (max-width: 480px) {
+    .stats { grid-template-columns: 1fr; }
+  }
+
+  /* Fade-in on load */
+  .fade-in { animation: fadeIn 0.8s ease both; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in.d1 { animation-delay: 0.1s; }
+  .fade-in.d2 { animation-delay: 0.2s; }
+  .fade-in.d3 { animation-delay: 0.3s; }
+  .fade-in.d4 { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">EMC<span>.</span></div>
+    <a href="#offer" class="nav-cta">Get Audit for ₹1</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="badge fade-in"><span class="dot"></span> Live Webinar · Limited Seats</div>
+    <h1 class="fade-in d1">Scale Your Business with the <span class="accent">EMC Framework</span></h1>
+    <p class="hero-sub fade-in d2">Join our exclusive live webinar and discover the proven system top entrepreneurs use to multiply revenue, automate operations, and reclaim their time.</p>
+
+    <div class="cta-group fade-in d3">
+      <a href="#offer" class="btn-primary">Claim Your ₹1 Audit →</a>
+      <a href="#learn" class="btn-secondary">What You'll Learn</a>
+    </div>
+
+    <div class="stats fade-in d4">
+      <div>
+        <div class="stat-num">10,000+</div>
+        <div class="stat-label">Attendees</div>
+      </div>
+      <div>
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Avg Rating</div>
+      </div>
+      <div>
+        <div class="stat-num">90 min</div>
+        <div class="stat-label">Live Session</div>
+      </div>
+      <div>
+        <div class="stat-num">₹1</div>
+        <div class="stat-label">Audit Fee</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL LEARN -->
+<section id="learn">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">What You'll Learn</div>
+      <h2>Five pillars to <span class="accent">10x your business</span></h2>
+    </div>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <div class="learn-icon">🎯</div>
+        <h3>Clarity & Positioning</h3>
+        <p>Define your offer, audience, and message so the right buyers find you instantly — without chasing.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">📈</div>
+        <h3>Predictable Revenue</h3>
+        <p>Build a marketing engine that brings leads on autopilot, not from referrals or luck.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">⚙️</div>
+        <h3>Systems & Automation</h3>
+        <p>Replace yourself in operations with simple SOPs, tools, and delegation frameworks.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">💸</div>
+        <h3>Pricing & Profit</h3>
+        <p>Raise prices without losing clients. Stop discounting. Build margins that fund growth.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">👥</div>
+        <h3>Team Building</h3>
+        <p>Hire, train, and retain a small high-leverage team that performs without micromanagement.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">🚀</div>
+        <h3>Scale Without Burnout</h3>
+        <p>The exact rhythm to scale from ₹1L to ₹1Cr+/month without sacrificing your weekends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOST -->
+<section class="host-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Meet Your Host</div>
+      <h2>Learn from someone who's <span class="accent">done it</span></h2>
+    </div>
+    <div class="host-card">
+      <div class="host-avatar">EMC</div>
+      <div class="host-info">
+        <h3>EMC Coach</h3>
+        <div class="host-role">Founder · Business Strategist</div>
+        <p class="host-bio">A decade of helping founders break revenue ceilings — from ₹10L/year coaches to ₹100Cr+ businesses. The frameworks taught in this webinar have been refined across hundreds of audits and live engagements.</p>
+        <div class="host-creds">
+          <div class="host-cred"><strong>500+</strong> Clients Coached</div>
+          <div class="host-cred"><strong>₹250Cr+</strong> Revenue Generated</div>
+          <div class="host-cred"><strong>12 Yrs</strong> Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Real Results</div>
+      <h2>What past attendees <span class="accent">say</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p>The audit alone was worth 100x more than ₹1. I walked away with three clear levers to pull in my business — and revenue jumped 40% in 60 days.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Rahul Mehta</div>
+            <div class="author-title">Founder, D2C Brand</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p>I've attended dozens of webinars. This one actually delivered frameworks I could apply the same day. No fluff, no upsell carnival — just signal.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div>
+            <div class="author-name">Priya Sharma</div>
+            <div class="author-title">Coach & Consultant</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p>The clarity on positioning saved me from a six-figure mistake. Cannot recommend this enough — book the audit, take the call, do the work.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Arjun Kapoor</div>
+            <div class="author-title">SaaS Founder</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="offer">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Limited Time Offer</div>
+      <h2>Get a full business audit for <span class="accent">just ₹1</span></h2>
+    </div>
+    <div class="offer-card">
+      <div class="offer-tag">Today Only</div>
+      <div class="price">
+        <span class="currency">₹</span>1
+        <span class="strike">₹9,999</span>
+      </div>
+      <p class="offer-tagline">A 60-minute personalized audit + roadmap. No upsell. No catch.</p>
+      <ul class="offer-list">
+        <li><span class="check">✓</span> Full revenue & operations diagnostic</li>
+        <li><span class="check">✓</span> 3 customized growth recommendations</li>
+        <li><span class="check">✓</span> Action roadmap for next 90 days</li>
+        <li><span class="check">✓</span> Recording + summary delivered to your inbox</li>
+      </ul>
+      <a href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener" class="btn-payment">
+        Book Your ₹1 Audit Now →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="register">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Reserve Your Spot</div>
+      <h2>Save your seat for the <span class="accent">live webinar</span></h2>
+    </div>
+    <div class="form-wrap">
+      <form id="registerForm" novalidate>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required />
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">Reserve My Seat →</button>
+        <div class="form-message" id="formMessage"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">FAQ</div>
+      <h2>Common questions, <span class="accent">answered</span></h2>
+    </div>
+    <div class="faq-grid">
+      <details class="faq-item">
+        <summary>What's actually included in the ₹1 audit?</summary>
+        <p>A full 60-minute one-on-one diagnostic of your business — revenue, operations, positioning — followed by a custom roadmap with three high-leverage actions for the next 90 days.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a hidden upsell at the end?</summary>
+        <p>No. The audit stands on its own. If, after the call, you'd like further help, options are discussed — but never pushed. Most attendees walk away with everything they need.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Who is this webinar for?</summary>
+        <p>Founders, coaches, consultants, and operators doing ₹5L+/month who want a clear, repeatable system to scale without burning out.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will the session be recorded?</summary>
+        <p>Yes. Registered attendees get the recording, slides, and a summary delivered to their inbox within 24 hours of the live session.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I get my Zoom link?</summary>
+        <p>After you reserve your seat and complete the ₹1 audit booking, the Zoom link is emailed to you immediately and again 1 hour before the session.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="logo">EMC<span>.</span></div>
+    <p>© 2026 EMC Webinar. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // ====== CONFIG ======
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5AbYuMHpPms_Yku1ORig7z7b5wiwCSv1nVZlL-ewkgvrzaCbLAiCO6Ppwz8wkRsMa/exec";
+  // ====================
+
+  const form = document.getElementById('registerForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formMessage = document.getElementById('formMessage');
+
+  function showSuccess() {
+    formMessage.className = 'form-message success';
+    formMessage.textContent = '✓ You\'re in! Check your inbox for the webinar details.';
+    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Reserve My Seat →';
+    // Optional: scroll into view
+    formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function showError() {
+    formMessage.className = 'form-message error';
+    formMessage.textContent = '✗ Something went wrong. Please try again or contact support.';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Reserve My Seat →';
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    if (!name || !email || !phone) {
+      formMessage.className = 'form-message error';
+      formMessage.textContent = 'Please fill in all fields.';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    formMessage.className = 'form-message';
+    formMessage.style.display = 'none';
+
+    const url = SCRIPT_URL + "?" + new URLSearchParams({ name: name, email: email, phone: phone });
+
+    fetch(url, { method: "GET", mode: "no-cors" })
+      .then(() => showSuccess())
+      .catch(() => showError());
+  });
+</script>
+
+</body>
+</html>
